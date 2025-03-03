@@ -1,0 +1,21 @@
+{
+  "machine": { "gpu": 1, "vram": 0, "cpu": 8000, "ram": 16000 },
+  "job": {
+    "APIVersion": "V1beta1",
+    "Spec": {
+      "Deal": { "Concurrency": 1 },
+      "Docker": {
+        "Entrypoint": [
+          "/app/src/run_model", {{ .request }}
+        ],
+        "Image": "devlinrocha/qwen2.5-coder-7b:v0.0.0@sha256:f7b19ded9e2659b96fb438d7d595b4a361ae039057685dd252eaaa7028e6ef6c"
+      },
+      "Engine": "Docker",
+      "Network": { "Type": "None" },
+      "Outputs": [{ "Name": "outputs", "Path": "/outputs" }],
+      "Resources": { "GPU": "1", "CPU": "8", "Memory": "16Gb" },
+      "Timeout": 1800,
+      "Verifier": "Noop"
+    }
+  }
+}
