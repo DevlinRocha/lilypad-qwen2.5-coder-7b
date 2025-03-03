@@ -22,12 +22,12 @@ RUN apt-get update && apt-get install -y --no-install-recommends curl \
   # Create outputs directory and set permissions
   && mkdir -p ./outputs && chmod 777 ./outputs
 
+EXPOSE 11434
+
 # Copy source code
 COPY src ./src
 
 RUN chmod +x ./src/run_model
-
-EXPOSE 11434
 
 # Set outputs directory as a volume
 VOLUME ./outputs
